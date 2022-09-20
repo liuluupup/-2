@@ -16,45 +16,124 @@ export const asyncRouterMap = [
     redirect: '/hadoopmanagment',
     children: [
       {
+        path: '/hadoopmanagment/home/home',
+        name: 'home',
+        component: RouteView,
+        meta: { title: 'menu.home', icon: 'table' }
+      },
+      {
         path: '/hadoopmanagment',
         name: 'hadoopmanagment',
         component: RouteView,
         redirect: '/hadoopmanagment/hadooplist',
-        meta: { title: 'menu.hadoopmanagment', icon: 'table' },
+        meta: { title: 'menu.data', icon: 'file' },
         children: [
           {
             path: '/hadoopmanagment/hadooplist',
             name: 'Hadooplist',
             hideChildrenInMenu: true,
             component: () => import('@/views/hadoopmanagment/hadooplist/List'),
-            meta: { title: 'menu.hadoopmanagment.hadooplist', keepAlive: true }
-          },
-          {
-            path: '/hadoopmanagment/hadoopdetails/:id?',
-            name: 'Hadoopdetails',
-            hidden: true,
-            component: () => import('@/views/hadoopmanagment/hadoopdetails/Details/'),
-            meta: { title: 'menu.hadoopmanagment.hadoopdetails', keepAlive: true }
+            meta: { title: 'menu.data.generate', keepAlive: true }
           },
           {
             path: '/hadoopmanagment/hadoopintall',
             name: 'Hadoopinstall',
             hideChildrenInMenu: true,
             component: () => import('@/views/hadoopmanagment/hadoopinstall/Install'),
-            meta: { title: 'menu.hadoopmanagment.hadoopintall', keepAlive: true }
+            meta: { title: 'menu.data.history', keepAlive: true }
+          }
 
+        ]
+      },
+      {
+        path: '/hadoopmanagmen/databar/data1',
+        name: 'data1',
+        component: RouteView,
+        meta: { title: 'menu.data.bar', icon: 'desktop' },
+        children: [
+          {
+            path: '/hadoopmanagment/databar/ziying',
+            name: 'ziying',
+            hideChildrenInMenu: true,
+            component: () => import('@/views/hadoopmanagment/databar/ziying'),
+            meta: { title: 'menu.data.ziying', keepAlive: true }
           },
           {
-            path: '/hadoopmanagment/hadoopverification',
-            name: 'verification',
+            path: '/hadoopmanagment/databar/shuaxin',
+            name: 'shuaxin',
             hideChildrenInMenu: true,
-            component: () => import('@/views/hadoopmanagment/hadoopverification/Verification'),
-            meta: { title: 'menu.hadoopmanagment.hadoopverification', keepAlive: true }
+            component: () => import('@/views/hadoopmanagment/databar/shuaxin'),
+            meta: { title: 'menu.data.shuaxin', keepAlive: true }
+          },
+          {
+            path: '/hadoopmanagment/databar/shangshi',
+            name: 'shangshi',
+            hideChildrenInMenu: true,
+            component: () => import('@/views/hadoopmanagment/databar/shangshi'),
+            meta: { title: 'menu.data.shangshi', keepAlive: true }
+          },
+          {
+            path: '/hadoopmanagment/databar/xiaoliang',
+            name: 'xiaoliang',
+            hideChildrenInMenu: true,
+            component: () => import('@/views/hadoopmanagment/databar/xiaoliang'),
+            meta: { title: 'menu.data.xiaoliang', keepAlive: true }
+          },
+          {
+            path: '/hadoopmanagment/databar/zhongliang',
+            name: 'zhongliang',
+            hideChildrenInMenu: true,
+            component: () => import('@/views/hadoopmanagment/databar/zhongliang'),
+            meta: { title: 'menu.data.zhongliang', keepAlive: true }
+          },
+          {
+            path: '/hadoopmanagment/databar/pinglun',
+            name: 'pinglun',
+            hideChildrenInMenu: true,
+            component: () => import('@/views/hadoopmanagment/databar/pinglun'),
+            meta: { title: 'menu.data.pinglun', keepAlive: true }
+          },
+          {
+            path: '/hadoopmanagment/databar/xiangsu',
+            name: 'xiangsu',
+            hideChildrenInMenu: true,
+            component: () => import('@/views/hadoopmanagment/databar/xiangsu'),
+            meta: { title: 'menu.data.xiangsu', keepAlive: true }
+          },
+          {
+            path: '/hadoopmanagment/databar/dianchi',
+            name: 'dianchi',
+            hideChildrenInMenu: true,
+            component: () => import('@/views/hadoopmanagment/databar/dianchi'),
+            meta: { title: 'menu.data.dianchi', keepAlive: true }
+          },
+          {
+            path: '/hadoopmanagment/databar/chongdian',
+            name: 'chongdian',
+            hideChildrenInMenu: true,
+            component: () => import('@/views/hadoopmanagment/databar/chongdian'),
+            meta: { title: 'menu.data.chongdian', keepAlive: true }
+          },
+          {
+            path: '/hadoopmanagment/databar/xitong',
+            name: 'xitong',
+            hideChildrenInMenu: true,
+            component: () => import('@/views/hadoopmanagment/databar/xitong'),
+            meta: { title: 'menu.data.xitong', keepAlive: true }
+          },
+          {
+            path: '/hadoopmanagment/databar/pinpai',
+            name: 'pinpai',
+            hideChildrenInMenu: true,
+            component: () => import('@/views/hadoopmanagment/databar/pinpai'),
+            meta: { title: 'menu.data.pinpai', keepAlive: true }
           }
+
         ]
       }
 
     ]
+
   },
   {
     path: '*',

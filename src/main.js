@@ -14,16 +14,18 @@ import themePluginConfig from '../config/themePluginConfig'
 // mock
 // WARNING: `mockjs` NOT SUPPORT `IE` PLEASE DO NOT USE IN `production` ENV.
 import './mock'
-
 import bootstrap from './core/bootstrap'
 import './core/lazy_use' // use lazy load components
 import './permission' // permission control
 import './utils/filter' // global filter
 import './global.less' // global style
 import BaiduMap from 'vue-baidu-map'
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
 Vue.use(BaiduMap, {
   ak: process.env.VUE_APP_BD_MAP_AK
 })
+
 Vue.config.productionTip = false
 
 // mount axios to `Vue.$http` and `this.$http`

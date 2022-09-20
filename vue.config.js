@@ -89,15 +89,10 @@ const vueConfig = {
       less: {
         modifyVars: {
           // less vars，customize ant design theme
-          'layout-header-background': '#7ECA6C',
-          'primary-color': '#6DC359',
-          'layout-body-background': '#ECF8EF',
-          'menu-dark-item-active-bg': '#93D284',
-          'border-radius-base': '2px',
-          'menu-dark-submenu-bg': '#6DC359',
-          // 'menu-dark-highlight-color': '#FFF',
-          'menu-dark-color': '#FFF',
-          'shadow-color': 'rgba(0,0,0,0)'
+
+          // 'primary-color': '#F5222D',
+          // 'link-color': '#F5222D',
+          'border-radius-base': '2px'
         },
         // DO NOT REMOVE THIS LINE
         javascriptEnabled: true

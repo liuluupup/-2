@@ -9,7 +9,7 @@
         <div class="top">
           <div class="header">
             <a href="/">
-              <img src="~@/assets/logo.png" class="logo" alt="logo" style="width:200px;height:100px">
+              <img src="~@/assets/logo.jpg" class="logo" alt="logo" style="width:200px;height:100px">
             </a>
           </div>
         </div>

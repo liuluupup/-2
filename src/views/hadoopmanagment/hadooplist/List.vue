@@ -5,22 +5,82 @@
         <a-form layout="inline">
           <a-row :gutter="48">
             <a-col :md="10" :sm="30">
-              <a-form-item label="集群名">
-                <a-input v-model="queryParam.name" placeholder="请输入集群名"/>
+              <a-form-item label="数据数量">
+                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
               </a-form-item>
             </a-col>
-            <a-col :md="6" :sm="24">
-              <span class="table-page-search-submitButtons" :style="{} ">
-                <a-button type="primary" @click="reload()">搜索</a-button>
-                <a-button style="margin-left: 8px" @click="() => this.queryParam = {}">重置</a-button>
-              </span>
+          </a-row>
+        </a-form>
+      </div>
+      <div class="table-page-search-wrapper">
+        <a-form layout="inline">
+          <a-row :gutter="48">
+            <a-col :md="10" :sm="30">
+              <a-form-item label="品牌">
+                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
+              </a-form-item>
+            </a-col>
+          </a-row>
+        </a-form>
+      </div>
+      <div class="table-page-search-wrapper">
+        <a-form layout="inline">
+          <a-row :gutter="48">
+            <a-col :md="10" :sm="30">
+              <a-form-item label="机型">
+                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
+              </a-form-item>
+            </a-col>
+          </a-row>
+        </a-form>
+      </div>
+      <div class="table-page-search-wrapper">
+        <a-form layout="inline">
+          <a-row :gutter="48">
+            <a-col :md="10" :sm="30">
+              <a-form-item label="价格区间">
+                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
+              </a-form-item>
+            </a-col>
+          </a-row>
+        </a-form>
+      </div>
+      <div class="table-page-search-wrapper">
+        <a-form layout="inline">
+          <a-row :gutter="48">
+            <a-col :md="10" :sm="30">
+              <a-form-item label="评论数区间">
+                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
+              </a-form-item>
+            </a-col>
+          </a-row>
+        </a-form>
+      </div>
+      <div class="table-page-search-wrapper">
+        <a-form layout="inline">
+          <a-row :gutter="48">
+            <a-col :md="10" :sm="30">
+              <a-form-item label="SIM卡数量">
+                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
+              </a-form-item>
+            </a-col>
+          </a-row>
+        </a-form>
+      </div>
+      <div class="table-page-search-wrapper">
+        <a-form layout="inline">
+          <a-row :gutter="48">
+            <a-col :md="10" :sm="30">
+              <a-form-item label="系统">
+                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
+              </a-form-item>
             </a-col>
           </a-row>
         </a-form>
       </div>
       <div class="table-operator">
         <a-button type="primary" icon="plus" @click="handleAdd">
-          新增集群
+          生成
         </a-button>
       </div>
       <a-modal
@@ -82,7 +142,7 @@ export default {
   data () {
     return {
       current: 2,
-      hadoopformModalTitle: '新增集群',
+      hadoopformModalTitle: '生成',
       hadoopform: this.$form.createForm(this),
       checkedValues: [],
       queryParam: {},
@@ -108,7 +168,7 @@ export default {
     },
     handleAdd () {
       console.log('abcd')
-      this.hadoopformModalTitle = '新增集群'
+      this.hadoopformModalTitle = '生成'
       this.visible = true
       this.reloadTableData()
       const values = this.hadoopform.getFieldsValue()
