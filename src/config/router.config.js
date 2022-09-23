@@ -52,6 +52,13 @@ export const asyncRouterMap = [
         meta: { title: 'menu.data.bar', icon: 'desktop' },
         children: [
           {
+            path: '/hadoopmanagment/databar/data1',
+            name: 'data1',
+            hideChildrenInMenu: true,
+            component: () => import('@/views/hadoopmanagment/databar/data1'),
+            meta: { title: 'menu.data.zhanshi', keepAlive: true }
+          },
+          {
             path: '/hadoopmanagment/databar/ziying',
             name: 'ziying',
             hideChildrenInMenu: true,

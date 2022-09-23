@@ -19,5 +19,6 @@ export default {
     'menu.data.dianchi': '手机电池容量前十',
     'menu.data.chongdian': '手机充电功率前十',
     'menu.data.xitong': '手机系统',
-    'menu.data.pinpai': '手机品牌'
+    'menu.data.pinpai': '手机品牌',
+    'menu.data.zhanshi': '展示页面'
 }

@@ -16,13 +16,26 @@
       </a-tag>
     </span>
     <span slot="action" >
-      <a-button type="primary" ghost @click="hide(record)">规则详情</a-button>
-
-      <a-button style="left:15px" type="danger" ghost @click="hide(record)">查看结果</a-button>
+      <div>
+        <a-button type="primary" @click="showModal" style="top: 16px; right: 10px;">
+          规则详情
+        </a-button>
+        <a-modal v-model="visible" title="Basic Modal" @ok="handleOk">
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </a-modal>
+      </div>
+      <div>
+        <a-button type="danger" @click="gotolink" style="left:85px;top: -16px;">
+          查看结果
+        </a-button>
+      </div>
     </span>
   </a-table>
 </template>
 <script>
+
 const columns = [
 {
     dataIndex: 'xuhao',
@@ -71,7 +84,23 @@ const data = [
     runer: 'admin',
     shuliang: '10w+',
     time: '2020-9-23',
-    tags: ['运行中', '已完成']
+    tags: ['运行中']
+  },
+  {
+    xuhao: '2',
+    renwu: '第二次数据生成',
+    runer: 'admin',
+    shuliang: '10w+',
+    time: '2020-9-24',
+    tags: ['运行中']
+  },
+  {
+    xuhao: '3',
+    renwu: '第三次数据生成',
+    runer: 'admin',
+    shuliang: '10w+',
+    time: '2020-9-25',
+    tags: ['完成']
   }
 
 ]
@@ -80,9 +109,23 @@ export default {
   data () {
     return {
       data,
-      columns
+      columns,
+      visible: false
     }
-  }
-}
+  },
 
+methods: {
+  showModal () {
+      this.visible = true
+    },
+    handleOk (e) {
+      console.log(e)
+      this.visible = false
+    },
+    gotolink () {
+      //  对应router目录下index.js中定义的name
+this.$router.push({ name: 'data1' })
+    }
+}
+}
 </script>
