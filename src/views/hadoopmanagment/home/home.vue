@@ -1,146 +1,165 @@
 <template>
   <page-header-wrapper>
-    <a-card :body-style="{ padding: '24px 32px' , height:'650px'}" :bordered="false">
-      <a-form :form="formData">
-        <div style="width:900px;margin-left: auto;margin-right: auto;margin-top: 20px;">
-          <a-row type="flex">
-            <a-col :span="18">
-              <a-form-item label="选择集群" :labelCol="{ span: 6 }" :wrapperCol="{ span: 15 }">
-                <a-select
-                  :allow-clear="true"
-                  name="hdfsName"
-                  v-decorator="['hadoopId', { rules: [{ required: true, message: '请选择集群' }] }]"
-                  placeholder="请选择集群"
-                  :options="hdfsSelectOptions"
-                />
-              </a-form-item>
-              <a-form-item label="选择验证方式" :labelCol="{ span: 6 }" :wrapperCol="{ span: 15 }">
-                <a-select placeholder="请选择" v-decorator="['type',{initialValue: undefined}]">
-                  <a-select-option :value="1">Jps验证</a-select-option>
-                  <a-select-option :value="2">50070验证</a-select-option>
-                </a-select>
-              </a-form-item>
-            </a-col>
-          </a-row>
-        </div></a-form>
-      <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:50px;">
-        <a-button type="primary" style="margin-bottom: 15px;margin-left: 80px;" @click="returnList">
-          返回
-        </a-button>
-        <a-button type="primary" style="margin-bottom: 15px;margin-left: 100px;" @click="toVar">
-          验证
-        </a-button>
-        <a-modal
-          :forceRender="true"
-          v-model="visible"
-          @cancel="handleCancel"
-          @ok="varOk"
-          cancelText="取消"
-          okText="确定"
-          :footer="null"
-          :title="varModalTitle"
-        >
-          <div v-if="messageType === 'text'">
-            <p v-for="(item,index) in messages" :key="index">{{ item }}</p>
-          </div>
-          <div v-if="messageType === 'url'">
-            <a v-for="(item,index) in messages" :key="index" :href="item" target="_blank"> {{ item }} </a>
-          </div>
-        </a-modal>
+    <div class="content">
+      <div style="margin-left: 180px ; margin-top: 30px;">
+        <a-card hoverable>
+          <img
+            slot="cover"
+            alt="example"
+            src="~@/assets/jdlogo.jpg"
+            width="300px"
+            height="200px"
+          />
+          <a-card-meta title="京东Spark大数据分析系统">
+            <template slot="description">
+              www.jd.com
+            </template>
+          </a-card-meta>
+        </a-card>
+        <a-table :columns="columns" :data-source="data" >
+          <a slot="name" slot-scope="text">{{ text }}</a>
+        </a-table>
       </div>
 
-    </a-card>
+      <div style="width:600px;height:80px;margin-left:190px;margin-top: 30px;">
+        <a-row :gutter="12" style="margin-left:40px">
+          <a-col :span="12">
+            <a-statistic title="OPPO" :value="11228" style="margin-right: 0px, width:360px">
+              <template #suffix>
+                <a-icon type="like" />
+              </template>
+            </a-statistic>
+          </a-col>
+          <a-col :span="12">
+            <a-statistic title="vivo" :value="932" class="demo-class">
+              <template #suffix>
+                <span> / 100</span>
+              </template>
+            </a-statistic>
+          </a-col>
+        </a-row>
+        <a-row :gutter="12" style="margin-top:20px ;margin-left:40px">
+          <a-col :span="12">
+            <a-statistic title="iphone" :value="50228" style="margin-right: 0px, width:360px">
+              <template #suffix>
+                <a-icon type="like" />
+              </template>
+            </a-statistic>
+          </a-col>
+          <a-col :span="12">
+            <a-statistic title="华为" :value="3522" class="demo-class">
+              <template #suffix>
+                <span> / 100</span>
+              </template>
+            </a-statistic>
+          </a-col>
+        </a-row>
+        <div style="width:600px;height:80px;margin-top:20px">
+          <a-card :body-style="{ padding: '24px 32px' , height:'650px'}" :bordered="false">
+          </a-card>
+          <div style="width: 500px;height: 400px" id="main">
+          </div>
+        </div>
+      </div>
+    </div>
 
   </page-header-wrapper>
 </template>
-
 <script>
-import { getList } from '@/api/hadoop/hadoop'
-import { execJps } from '@/api/hadoop/hadoopkey'
-import stomp from '@/utils/websocket'
-export default {
-  name: 'BaseForm',
-  components: {
 
-  },
-  data () {
-    return {
-      currentId: this.$route.params.id,
-      formData: this.$form.createForm(this),
-      varModalTitle: '验证',
-      varform: this.$form.createForm(this),
-      visible: false,
-      hdfsSelectOptions: [],
-      messages: [],
-      messageType: 'text'
-    }
-  },
-  computed: {
-
-  },
-  created () {
-    getList().then((res) => {
-      this.hdfsSelectOptions = res.data.map((e) => {
-        return { value: e.id, label: e.hdfsName }
-      })
-    })
-  },
-  methods: {
-    toVar () {
-      this.varModalTitle = '验证'
-      this.visible = true
-      const values = this.varform.getFieldsValue()
-        Object.keys(values).forEach((k) => {
-          values[k] = undefined
+  export default {
+    name1: 'Page',
+    name: 'Index',
+    mounted () {
+        // 在通过mounted调用即可
+      this.echartsInit()
+    },
+    methods: {
+        // 初始化echarts
+        echartsInit () {
+          // 柱形图
+          // 因为初始化echarts 的时候，需要指定的容器 id='main'
+        this.$echarts.init(document.getElementById('main')).setOption({
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [120, 200, 150, 80, 70, 110, 130],
+                type: 'bar',
+                showBackground: true,
+                backgroundStyle: {
+                    color: 'rgba(220, 220, 220, 0.8)'
+                }
+            }]
         })
-      this.varform.setFieldsValue(values)
-      this.varOk()
-    },
-    varOk () {
-       this.formData.validateFields((err, values) => {
-          console.log(values)
-        if (!err) {
-          this.messages = []
-        const type = values['type']
-        switch (type) {
-          case 1 : {
-            this.messageType = 'text'
-            stomp.init(() => {
-              stomp.sub('/topic/message-text', (data) => {
-                this.messages.push(data)
-                })
-              })
-              execJps(values).then(res => {
-              }).catch(err => {
-                this.$notification.error('error' || err.message)
-              })
-              break
-          }
-          case 2 : {
-            this.messages.push('http://10.7.122.114:50070')
-            this.messageType = 'url'
-          }
-        }
-        } else {
-          console.log(err)
-        }
-      })
-    },
-    handleCancel () {
-      this.visible = false
-      this.messages = ''
-    },
-       returnList () {
-       this.$router.push({ path: '/hadoopmanagment/hadooplist' })
-    }
-  },
-    handleScenicSearchChange (value) {
-        this.fetching = false
-    },
+      }
 
-    back () {
-      this.$router.back(-1)
+      },
+    data () {
+      return {
+         data,
+      columns
     }
   }
+}
+
+  const columns = [
+  {
+    title: '品牌',
+    dataIndex: 'name',
+    key: 'name',
+    scopedSlots: { customRender: 'name' },
+    width: 80
+  },
+  {
+    title: '购买数量',
+    dataIndex: 'age',
+    key: 'age',
+    width: 80
+  },
+  {
+    title: '购买数量前十',
+    dataIndex: 'address',
+    key: 'address 1',
+    width: 80
+  }
+
+]
+
+const data = [
+  {
+    key: '1',
+    name: 'OPPO',
+    age: 3200,
+    address: 233,
+    tags: ['nice', 'developer']
+  },
+  {
+    key: '2',
+    name: 'vivo',
+    age: 4200,
+    address: 3444,
+    tags: ['loser']
+  },
+  {
+    key: '3',
+    name: 'iphone',
+    age: 3200,
+    address: 3431,
+    tags: ['cool', 'teacher']
+  }
+]
 
 </script>
+
+<style scoped>
+.content{
+  background-color: white;
+  display:flex;
+  justify-content: stretch;
+}
+</style>

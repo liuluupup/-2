@@ -16,9 +16,9 @@ export const asyncRouterMap = [
     redirect: '/hadoopmanagment',
     children: [
       {
-        path: '/hadoopmanagment/home/home',
-        name: 'home',
-        component: RouteView,
+        path: '/hadoopmanagment',
+        name: 'hadoopmanagment',
+        component: () => import('@/views/hadoopmanagment/home/Home'),
         meta: { title: 'menu.home', icon: 'table' }
       },
       {
