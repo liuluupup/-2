@@ -21,7 +21,7 @@
     -->
     <template v-slot:menuHeaderRender>
       <div>
-        <img src="~@/assets/logo.jpg" style="width:146px;height: 66px;margin-left:calc(50% - 73px - 24px );" alt="logo">
+        <img src="~@/assets/logo2.png" style="width:106px;height: 66px;margin-left:calc(50% - 53px - 24px );" alt="logo">
       </div>
     </template>
     <!-- 1.0.0+ 版本 pro-layout 提供 API,

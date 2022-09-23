@@ -39,7 +39,7 @@ export const asyncRouterMap = [
             path: '/hadoopmanagment/hadoopintall',
             name: 'Hadoopinstall',
             hideChildrenInMenu: true,
-            component: () => import('@/views/hadoopmanagment/hadoopinstall/Install'),
+            component: () => import('@/views/hadoopmanagment/hadoopinstall/history'),
             meta: { title: 'menu.data.history', keepAlive: true }
           }
 
