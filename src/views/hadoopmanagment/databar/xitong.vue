@@ -67,7 +67,7 @@
               { name: 'Android', value: 50 },
               { name: 'IOS', value: 20 },
               { name: 'Harmony', value: 10 },
-              { name: '塞班', value: 20 }
+              { name: '功能机', value: 20 }
             ],
             itemStyle: {
               normal: {

@@ -63,7 +63,7 @@
             {
               type: 'category',
               axisTick: {
-                show: false // 坐标轴刻度。
+                show: true // 坐标轴刻度。
               },
               axisLine: {
                 show: true, // 坐标轴轴线。

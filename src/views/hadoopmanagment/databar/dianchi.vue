@@ -22,7 +22,7 @@
                       title: {
                           left: '3%',
                           top: '5%',
-                          text: '最近一周订单数量' // 标题文本，支持使用 \n 换行。
+                          text: '电池容量' // 标题文本，支持使用 \n 换行。
                       },
             tooltip: {
               trigger: 'axis'

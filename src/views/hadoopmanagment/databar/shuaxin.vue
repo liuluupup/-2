@@ -22,7 +22,7 @@
         this.$echarts.init(document.getElementById('main')).setOption({
             xAxis: {
                 type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+                data: ['小米', 'vivo', 'oppo', 'iPhone', '三星']
             },
             yAxis: {
                 type: 'value'

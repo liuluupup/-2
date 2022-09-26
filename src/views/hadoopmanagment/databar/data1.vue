@@ -2,7 +2,7 @@
   <page-header-wrapper>
     <a-card :body-style="{ padding: '24px 32px' , height:'650px'}" :bordered="false">
     </a-card >
-    <div style="width:900px;height: 200px;" >
+    <div style="width:900px;height: 400px;" >
       <a-card hoverable style="width:200px" @click="show1">
         <img
           slot="cover"
