@@ -1,13 +1,32 @@
 <template>
   <page-header-wrapper>
     <div class="content">
-      <div style="margin-left: 180px ; margin-top: 30px;">
-        <a-card hoverable>
+      <div style="margin-left: 20px ; margin-top: 30px; width:240px">
+        <a-card hoverable @click="show1">
           <img
             slot="cover"
             alt="example"
             src="~@/assets/jdlogo.jpg"
-            width="300px"
+            width="500px"
+            height="200px"
+          />
+          <a-card-meta title="京东Spark大数据分析系统">
+            <template slot="description">
+              www.jd.com
+            </template>
+          </a-card-meta>
+        </a-card>
+        <a-table :columns="columns" :data-source="data" >
+          <a slot="name" slot-scope="text">{{ text }}</a>
+        </a-table>
+      </div>
+      <div style="margin-left: 80px ; margin-top: 30px; width:240px">
+        <a-card hoverable @click="show1">
+          <img
+            slot="cover"
+            alt="example"
+            src="~@/assets/jdlogo.jpg"
+            width="500px"
             height="200px"
           />
           <a-card-meta title="京东Spark大数据分析系统">
@@ -21,7 +40,7 @@
         </a-table>
       </div>
 
-      <div style="width:600px;height:80px;margin-left:190px;margin-top: 30px;">
+      <div style="width:400px;height:80px;margin-left:100px;margin-top: 30px;">
         <a-row :gutter="12" style="margin-left:40px">
           <a-col :span="12">
             <a-statistic title="OPPO" :value="11228" style="margin-right: 0px, width:360px">
@@ -54,7 +73,7 @@
             </a-statistic>
           </a-col>
         </a-row>
-        <div style="width:600px;height:80px;margin-top:20px">
+        <div style="width:700px;height:80px;margin-top:20px">
           <a-card :body-style="{ padding: '24px 32px' , height:'650px'}" :bordered="false">
           </a-card>
           <div style="width: 500px;height: 400px" id="main">
@@ -96,7 +115,11 @@
                 }
             }]
         })
-      }
+      },
+      show1 () {
+      //  对应router目录下index.js中定义的name
+    this.$router.push({ name: 'data1' })
+    }
 
       },
     data () {
