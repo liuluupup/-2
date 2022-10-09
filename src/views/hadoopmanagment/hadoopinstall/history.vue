@@ -1,131 +1,101 @@
 <template>
-  <a-table :columns="columns" :data-source="data">
-    <a slot="name" slot-scope="text">{{ text }}</a>
-    <span slot="xuhao"> 序号</span>
-    <span slot="renwu"> 任务名称</span>
-    <span slot="runner"> 操作者</span>
-    <span slot="shuliang"> 数量</span>
-    <span slot="time"> 操作时间</span>
-    <span slot="tags" slot-scope="tags">
-      <a-tag
-        v-for="tag in tags"
-        :key="tag"
-        :color="tag === 'loser' ? 'volcano' : tag.length > 5 ? 'geekblue' : 'green'"
-      >
-        {{ tag.toUpperCase() }}
-      </a-tag>
-    </span>
-    <span slot="action" >
-      <div>
-        <a-button type="primary" @click="showModal" style="top: 16px; right: 10px;">
-          规则详情
-        </a-button>
-        <a-modal v-model="visible" title="Basic Modal" @ok="handleOk">
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </a-modal>
-      </div>
-      <div>
-        <a-button type="danger" @click="gotolink" style="left:85px;top: -16px;">
-          查看结果
-        </a-button>
-      </div>
-    </span>
-  </a-table>
+  <page-header-wrapper>
+    <div>
+      <a-card>
+        <s-table
+          ref="table"
+          size="default"
+          rowKey="id"
+          :columns="columns"
+          :data="loadData"
+          showPagination="auto">
+          <span slot="status" slot-scope="text">
+            <a-badge :status="text | statusTypeFilter" :text="text | statusFilter" ></a-badge>
+          </span>
+          <span slot="serial" slot-scope="text, record, index">
+            {{ index + 1 }}
+          </span>
+
+          <span slot="action">
+            <template>
+              <a-button class="sys-btn" >
+                <a>编辑</a>
+              </a-button>
+
+              <a-button class="look-btn" >
+                <a>查看</a>
+              </a-button>
+
+              <!-- <a-button class="del-btn">
+                <a-popconfirm
+                  title="确定要删除这个优惠卷？"
+                  ok-text="删除"
+                  cancel-text="再想想"
+                  @confirm="handleDel(record.id)"
+                >
+                  <a>删除</a>
+                </a-popconfirm>
+              </a-button> -->
+
+            </template>
+          </span>
+        </s-table>
+      </a-card>
+    </div>
+  </page-header-wrapper>
 </template>
+
 <script>
-
-const columns = [
-{
-    dataIndex: 'xuhao',
-    key: 'xuhao',
-    slots: { title: 'xuhao' },
-    scopedSlots: { customRender: 'name' }
-  },
-  {
-    dataIndex: 'renwu',
-    key: 'renwu',
-    slots: { title: 'renwu' },
-    scopedSlots: { customRender: 'name' }
-  },
-  {
-    title: '操作者',
-    dataIndex: 'runer',
-    key: 'runer'
-  },
-  {
-    title: '数量',
-    dataIndex: 'shuliang',
-    key: 'shuliang'
-  },
-  {
-    title: '操作时间',
-    dataIndex: 'time',
-    key: 'time'
-  },
-  {
-    title: '状态',
-    key: 'tags',
-    dataIndex: 'tags',
-    scopedSlots: { customRender: 'tags' }
-  },
-  {
-    title: '操作',
-    key: 'action',
-    scopedSlots: { customRender: 'action' }
-  }
-]
-
-const data = [
-  {
-    xuhao: '1',
-    renwu: '第一次数据生成',
-    runer: 'admin',
-    shuliang: '10w+',
-    time: '2020-9-23',
-    tags: ['运行中']
-  },
-  {
-    xuhao: '2',
-    renwu: '第二次数据生成',
-    runer: 'admin',
-    shuliang: '10w+',
-    time: '2020-9-24',
-    tags: ['运行中']
-  },
-  {
-    xuhao: '3',
-    renwu: '第三次数据生成',
-    runer: 'admin',
-    shuliang: '10w+',
-    time: '2020-9-25',
-    tags: ['完成']
-  }
-
+  import { STable } from '@/components'
+  import { getbrand } from '@/api/spark/data1'
+  const columns = [
+         {
+          title: '序号',
+          scopedSlots: { customRender: 'serial' }
+        },
+        {
+          title: '任务名称',
+          dataIndex: 'name'
+        },
+         {
+          title: '数量',
+          dataIndex: 'num'
+        },
+        {
+          title: '操作时间',
+          dataIndex: 'operateTime'
+        },
+         {
+          title: '状态',
+          dataIndex: 'status'
+        },
+        {
+          title: '操作',
+          dataIndex: 'action',
+          scopedSlots: { customRender: 'action' }
+        }
 ]
 
 export default {
+  components: {
+     STable
+  },
   data () {
     return {
-      data,
       columns,
-      visible: false
+        loadData: (parameter) => {
+        const requestParameters = Object.assign({}, parameter, this.queryParam)
+        return getbrand(requestParameters).then((res) => {
+          return res.data
+        })
+      }
     }
   },
 
-methods: {
-  showModal () {
-      this.visible = true
+  created () {
     },
-    handleOk (e) {
-      console.log(e)
-      this.visible = false
-    },
-    gotolink () {
-      //  对应router目录下index.js中定义的name
-this.$router.push({ name: 'data1' })
-    }
-}
+  methods: {
+
+  }
 }
 </script>

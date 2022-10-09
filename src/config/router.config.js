@@ -16,14 +16,14 @@ export const asyncRouterMap = [
     redirect: '/hadoopmanagment',
     children: [
       {
-        path: '/hadoopmanagment',
-        name: 'hadoopmanagment',
+        path: '/hadoopmanagment/home/Home',
+        name: 'hadoopmanagment1',
         component: () => import('@/views/hadoopmanagment/home/Home'),
         meta: { title: 'menu.home', icon: 'table' }
       },
       {
         path: '/hadoopmanagment',
-        name: 'hadoopmanagment',
+        name: 'hadoopmanagment2',
         component: RouteView,
         redirect: '/hadoopmanagment/hadooplist',
         meta: { title: 'menu.data', icon: 'file' },
