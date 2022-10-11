@@ -145,7 +145,6 @@
       },
       data () {
         return {
-          sendData: 0,
           current: 2,
           hadoopformModalTitle: '生成',
           dataForm: this.$form.createForm(this, {
