@@ -20,10 +20,10 @@
         <a-button type="primary" @click="showModal" style="top: 16px; right: 10px;">
           规则详情
         </a-button>
-        <a-modal v-model="visible" title="Basic Modal" @ok="handleOk">
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+        <a-modal v-model="visible" title="规则详情" @ok="handleOk">
+          <p>系统占比：</p>
+          <p>SIM卡数量占比：</p>
+          <p>自营与非自营的比例：</p>
         </a-modal>
       </div>
       <div>

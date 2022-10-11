@@ -82,7 +82,7 @@
         this.$echarts.init(document.getElementById('main')).setOption({
             xAxis: {
                 type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                data: ['三星', '华为', 'vivo', 'iPhone', 'OPPO', '小米', '游戏机']
             },
             yAxis: {
                 type: 'value'

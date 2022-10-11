@@ -22,3 +22,12 @@ export function delhdfs (id) {
         method: 'delete'
     })
 }
+
+export function makedata (data) {
+    console.log(data)
+    return request({
+        url: `/api/spark/generateData`,
+        method: 'post',
+        data: data
+    })
+}

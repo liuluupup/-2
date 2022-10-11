@@ -1,219 +1,245 @@
 <template>
   <page-header-wrapper>
-    <a-card :bordered="false">
+    <a-card :bordered="false" style="height:600px">
       <div class="table-page-search-wrapper">
-        <a-form layout="inline">
-          <a-row :gutter="48">
-            <a-col :md="10" :sm="30">
-              <a-form-item label="数据数量">
-                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
-              </a-form-item>
+        <a-form layout="inline" :form="dataForm">
+          <a-row :gutter="20">
+            <a-col :span="12">
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item style="font-weight: 600;" label="数据数量">
+                    <a-input v-decorator="['num']" placeholder="请输入内容"/>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item style="font-weight: 600;" label="品牌">
+                    <a-input :disabled="Array.isArray(dataForm.getFieldValue('brandRandom')) && dataForm.getFieldValue('brandRandom')[0] === true" v-decorator="['brand']" placeholder="请输入内容"/>
+                  </a-form-item>
+                </a-col>
+                <a-col :span="6">
+                  <a-form-item>
+                    <a-checkbox-group v-decorator="['brandRandom']">
+                      <a-checkbox :value="true">
+                        随机生成
+                      </a-checkbox>
+                    </a-checkbox-group>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item style="font-weight: 600;" label="SIM卡数量"></a-form-item>
+                </a-col>
+                <a-col :span="6">
+                  <a-form-item>
+                    <a-checkbox-group v-decorator="['simRandom']">
+                      <a-checkbox :value="true">
+                        随机生成
+                      </a-checkbox>
+                    </a-checkbox-group>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item label="1个">
+                    <a-input :disabled="Array.isArray(dataForm.getFieldValue('simRandom')) && dataForm.getFieldValue('simRandom')[0] === true" v-decorator="['sim1']" placeholder="请输入内容"/>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item label="2个">
+                    <a-input :disabled="Array.isArray(dataForm.getFieldValue('simRandom')) && dataForm.getFieldValue('simRandom')[0] === true" v-decorator="['sim2']" placeholder="请输入内容"/>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+            </a-col>
+            <a-col :span="12">
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item style="font-weight: 600;" label="任务名称">
+                    <a-input v-decorator="['name']" placeholder="请输入内容"/>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item style="font-weight: 600;" label="机型">
+                    <a-input :disabled="Array.isArray(dataForm.getFieldValue('modelRandom')) && dataForm.getFieldValue('modelRandom')[0] === true" v-decorator="['model']" placeholder="请输入内容"/>
+                  </a-form-item>
+                </a-col>
+                <a-col :span="6">
+                  <a-form-item>
+                    <a-checkbox-group v-decorator="['modelRandom']">
+                      <a-checkbox :value="true">
+                        随机生成
+                      </a-checkbox>
+                    </a-checkbox-group>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item style="font-weight: 600;" label="系统">
+                  </a-form-item>
+                </a-col>
+                <a-col :span="6">
+                  <a-form-item>
+                    <a-checkbox-group v-decorator="['systemRandom']">
+                      <a-checkbox :value="true">
+                        随机生成
+                      </a-checkbox>
+                    </a-checkbox-group>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item label="安卓">
+                    <a-input :disabled="Array.isArray(dataForm.getFieldValue('systemRandom')) && dataForm.getFieldValue('systemRandom')[0] === true" v-decorator="['android']" placeholder="请输入内容"/>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item label="鸿蒙">
+                    <a-input :disabled="Array.isArray(dataForm.getFieldValue('systemRandom')) && dataForm.getFieldValue('systemRandom')[0] === true" v-decorator="['hamous']" placeholder="请输入内容"/>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item label="ios">
+                    <a-input :disabled="Array.isArray(dataForm.getFieldValue('systemRandom')) && dataForm.getFieldValue('systemRandom')[0] === true" v-decorator="['ios']" placeholder="请输入内容"/>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <a-row :gutter="20" align="middle">
+                <a-col :span="18">
+                  <a-form-item label="功能机">
+                    <a-input :disabled="Array.isArray(dataForm.getFieldValue('systemRandom')) && dataForm.getFieldValue('systemRandom')[0] === true" v-decorator="['other']" placeholder="请输入内容"/>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <a-row :gutter="20" align="middle">
+                <a-button type="primary" @click="handleAdd">
+                  生成
+                </a-button>
+              </a-row>
             </a-col>
           </a-row>
         </a-form>
-      </div>
-      <div class="table-page-search-wrapper">
-        <a-form layout="inline">
-          <a-row :gutter="48">
-            <a-col :md="10" :sm="30">
-              <a-form-item label="品牌">
-                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
-              </a-form-item>
-            </a-col>
-          </a-row>
-        </a-form>
-      </div>
-      <div class="table-page-search-wrapper">
-        <a-form layout="inline">
-          <a-row :gutter="48">
-            <a-col :md="10" :sm="30">
-              <a-form-item label="机型">
-                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
-              </a-form-item>
-            </a-col>
-          </a-row>
-        </a-form>
-      </div>
-      <div class="table-page-search-wrapper">
-        <a-form layout="inline">
-          <a-row :gutter="48">
-            <a-col :md="10" :sm="30">
-              <a-form-item label="价格区间">
-                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
-              </a-form-item>
-            </a-col>
-          </a-row>
-        </a-form>
-      </div>
-      <div class="table-page-search-wrapper">
-        <a-form layout="inline">
-          <a-row :gutter="48">
-            <a-col :md="10" :sm="30">
-              <a-form-item label="评论数区间">
-                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
-              </a-form-item>
-            </a-col>
-          </a-row>
-        </a-form>
-      </div>
-      <div class="table-page-search-wrapper">
-        <a-form layout="inline">
-          <a-row :gutter="48">
-            <a-col :md="10" :sm="30">
-              <a-form-item label="SIM卡数量">
-                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
-              </a-form-item>
-            </a-col>
-          </a-row>
-        </a-form>
-      </div>
-      <div class="table-page-search-wrapper">
-        <a-form layout="inline">
-          <a-row :gutter="48">
-            <a-col :md="10" :sm="30">
-              <a-form-item label="系统">
-                <a-input v-model="queryParam.name" placeholder="请输入数据数量"/>
-              </a-form-item>
-            </a-col>
-          </a-row>
-        </a-form>
-      </div>
-      <div class="table-operator">
-        <a-button type="primary" icon="plus" @click="handleAdd">
-          生成
-        </a-button>
-      </div>
-      <a-modal
-        :forceRender="true"
-        v-model="visible"
-        @cancel="handleCancel"
-        @ok="handleOk"
-        cancelText="取消"
-        okText="确定"
-        :title="hadoopformModalTitle"
-      >
-        <div>
-          <a-form :form="hadoopform">
-            <a-form-item label="集群名称" :labelCol="{ span: 6 }" :wrapperCol="{ span: 15 }">
-              <a-input v-decorator="['hdfsName',{initialValue: undefined,rules: [{required: true, message: '请输入集群名称'}]}]" placeholder="请输入集群名称" />
-            </a-form-item>
-          </a-form>
-        </div>
-      </a-modal>
-      <div style="display: flex; flex-flow: wrap;">
-
-        <div v-for="(item,index) in hadoopData" :key="index" style="width: calc(33% - 20px);background-color: #ffffff;margin: 10px; " >
-          <a-card :title="item.hdfsName" :bordered="true">
-            <template #extra>
-              <a-popconfirm
-                title="确定要删除这个集群？"
-                ok-text="删除"
-                cancel-text="再想想"
-                @confirm="handleDel(item.id)"
-              >
-                <a style="color: red" >删除</a>
-              </a-popconfirm>
-            </template>
-            <div>
-              <p>节点数: {{ item.nodeTotal }}</p>
-              <p>创建时间：{{ item.createTime }}</p>
-              <a-divider />
-              <p>已安装内容</p>
-              <p>{{ item.hdfs }} {{ item.flume }} {{ item.hive }} {{ item.zookeeper }} {{ item.hbase }} {{ item.kafka }}</p>
-            </div>
-            <div style="text-align:center">
-              <a-button type="primary" @click="handleDetail(item.id)">
-                查看详情
-              </a-button>
-            </div>
-          </a-card>
-        </div>
       </div>
     </a-card>
   </page-header-wrapper>
 </template>
 
-<script>
-import { getList, addhdfs, delhdfs } from '@/api/hadoop/hadoop'
+    <script>
+    import { addhdfs, delhdfs, makedata } from '@/api/hadoop/hadoop'
 
-export default {
-  components: {
-  },
-  data () {
-    return {
-      current: 2,
-      hadoopformModalTitle: '生成',
-      hadoopform: this.$form.createForm(this),
-      checkedValues: [],
-      queryParam: {},
-      hadoopData: [],
-      visible: false,
-      confirmLoading: false
-    }
-  },
-  created () {
-   this.reload()
-  },
-  methods: {
-    reload () {
-       getList(this.queryParam).then(res => {
-        this.hadoopData = res.data
-    })
-    },
-    statusChange () {
-      this.reloadTableData(true)
-    },
-    handleDetail (id) {
-      this.$router.push({ path: `/hadoopmanagment/hadoopdetails/${id}` })
-    },
-    handleAdd () {
-      console.log('abcd')
-      this.hadoopformModalTitle = '生成'
-      this.visible = true
-      this.reloadTableData()
-      const values = this.hadoopform.getFieldsValue()
-        Object.keys(values).forEach((k) => {
-          values[k] = undefined
-        })
-      this.hadoopform.setFieldsValue(values)
-    },
-    handleCancel () {
-      this.visible = false
-    },
-    handleOk () {
-      this.hadoopform.validateFields((err, values) => {
+    export default {
+      components: {
+      },
+      data () {
+        return {
+          sendData: 0,
+          current: 2,
+          hadoopformModalTitle: '生成',
+          dataForm: this.$form.createForm(this, {
+            brandRandom: [],
+            simRandom: [],
+            modelRandom: [],
+            systemRandom: []
+          }),
+          checkedValues: [],
+          queryParam: {},
+          hadoopData: [],
+          visible: false,
+          confirmLoading: false
+        }
+      },
+      created () {
+       this.reload()
+      },
+      methods: {
+
+        statusChange () {
+          this.reloadTableData(true)
+        },
+        handleDetail (id) {
+          this.$router.push({ path: `/hadoopmanagment/hadooplist/${id}` })
+        },
+        handleAdd () {
+          this.dataForm.validateFields((err, values) => {
         if (!err) {
-          addhdfs(values).then(res => {
-            this.hadoopform.resetFields()
-            this.visible = false
-            this.$notification.success({
-              message: '成功',
-              description: res.msg || `添加成功`
-            })
-            this.reload()
+          const { num, sim1, sim2, android, hamous, ios, other, name, brand, model, brandRandom, simRandom, modelRandom, systemRandom } = values
+          const formData = {
+            num,
+            systemPercent: systemRandom[0] !== true ? `${android};${hamous};${ios};${other}` : '0',
+            simPercent: simRandom[0] !== true ? `${sim1};${sim2}` : '0',
+            name,
+            brand: brandRandom[0] !== true ? brand : '0',
+            model: modelRandom[0] !== true ? model : '0'
+          }
+          makedata(formData).then((res) => {
+              this.$notification.success({
+                message: '成功',
+                description: res.msg || `操作成功`
+              })
           }).catch(err => {
-            this.$notification.error('error' || err.message)
+            this.$notification.error({
+              message: '失败',
+              description: err.msg || `操作失败`
+            })
           })
         } else {
           console.log(err)
         }
       })
-    },
-
-    handleDel (id) {
-      delhdfs(id).then((res) => {
-          this.reload()
-          this.$notification.success({
-            message: '成功',
-            description: res.msg || `操作成功`
+        },
+        handleCancel () {
+          this.visible = false
+        },
+        handleOk () {
+          this.hadoopform.validateFields((err, values) => {
+            if (!err) {
+              addhdfs(values).then(res => {
+                this.hadoopform.resetFields()
+                this.visible = false
+                this.$notification.success({
+                  message: '成功',
+                  description: res.msg || `添加成功`
+                })
+                this.reload()
+              }).catch(err => {
+                this.$notification.error('error' || err.message)
+              })
+            } else {
+              console.log(err)
+            }
           })
-      }).catch(err => {
-      this.$notification.error({
-          message: '失败',
-          description: err.msg || `操作失败`
-      })
-    })
+        },
+
+        handleDel (id) {
+          delhdfs(id).then((res) => {
+              this.reload()
+              this.$notification.success({
+                message: '成功',
+                description: res.msg || `操作成功`
+              })
+          }).catch(err => {
+          this.$notification.error({
+              message: '失败',
+              description: err.msg || `操作失败`
+          })
+        })
+        },
+        onChange (e) {
+          console.log(`checked = ${e.target.checked}`)
+        }
+      }
     }
-  }
-}
-</script>
+    </script>

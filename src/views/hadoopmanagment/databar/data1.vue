@@ -1,6 +1,6 @@
 <template>
   <page-header-wrapper>
-    <a-card :body-style="{ padding: '24px 32px' , height:'650px'}" :bordered="false">
+    <a-card :body-style="{ padding: '24px 32px' , height:'60px'}" :bordered="false"><span style="font-weight: 600">第一次生成的数据</span>
     </a-card >
     <div style="width:900px;height: 200px;" >
       <a-card hoverable style="width:200px" @click="show1">

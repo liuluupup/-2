@@ -61,7 +61,7 @@ export default {
   .container {
     width: 100%;
     min-height: 100%;
-    background: #f0f2f5 url(~@/assets/back.jpg) no-repeat 50%;
+    background: #f0f2f5 url(~@/assets/back2.jpg) no-repeat 50%;
     background-size: 100%;
     //padding: 50px 0 84px;
     position: relative;
@@ -90,7 +90,7 @@ export default {
       .background {
         width: 100%;
         height: 100vh;
-        background: url('../../src/assets/back.jpg') center center no-repeat;
+        background: url('../../src/assets/back2.jpg') center center no-repeat;
         background-size: 100% 100%;
         position: absolute;
       }
