@@ -1,8 +1,8 @@
 <template>
   <page-header-wrapper>
-    <a-card :body-style="{ padding: '24px 32px' , height:'60px'}" :bordered="false"><span style="font-weight: 600">第一次生成的数据</span>
+    <a-card :body-style="{ padding: '24px 32px' , height:'650px'}" :bordered="false">
     </a-card >
-    <div style="width:900px;height: 200px;" >
+    <div style="width:900px;height: 400px;" >
       <a-card hoverable style="width:200px" @click="show1">
         <img
           slot="cover"
@@ -39,13 +39,13 @@
           </template>
         </a-card-meta>
       </a-card>
-      <a-card hoverable style="width:200px;top: -801px;left: 730px;" @click="show4">
+      <a-card hoverable style="width:200px;top: -801px;left: 730px;" @click="show11">
         <img
           slot="cover"
           alt="example"
           src="~@/assets/jdlogo.jpg"
         />
-        <a-card-meta title="商品销量前十">
+        <a-card-meta title="手机品牌">
           <template slot="description">
             www.jd.com
           </template>
@@ -123,18 +123,7 @@
           </template>
         </a-card-meta>
       </a-card>
-      <a-card hoverable style="width:200px;top: -2076px;left:0px;" @click="show11">
-        <img
-          slot="cover"
-          alt="example"
-          src="~@/assets/jdlogo.jpg"
-        />
-        <a-card-meta title="手机品牌">
-          <template slot="description">
-            www.jd.com
-          </template>
-        </a-card-meta>
-      </a-card>
+
     </div>
 
   </page-header-wrapper>
@@ -160,10 +149,7 @@ methods: {
       //  对应router目录下index.js中定义的name
     this.$router.push({ name: 'shangshi' })
     },
-    show4 () {
-      //  对应router目录下index.js中定义的name
-    this.$router.push({ name: 'xiaoliang' })
-    },
+
     show5 () {
       //  对应router目录下index.js中定义的name
     this.$router.push({ name: 'zhongliang' })

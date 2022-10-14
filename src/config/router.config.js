@@ -16,9 +16,9 @@ export const asyncRouterMap = [
     redirect: '/hadoopmanagment',
     children: [
       {
-        path: '/hadoopmanagment/home/Home',
+        path: '/hadoopmanagment/home/home',
         name: 'hadoopmanagment',
-        component: () => import('@/views/hadoopmanagment/home/Home'),
+        component: () => import('@/views/hadoopmanagment/home/home'),
         meta: { title: 'menu.home', icon: 'table' }
       },
       {
@@ -78,13 +78,6 @@ export const asyncRouterMap = [
             hideChildrenInMenu: true,
             component: () => import('@/views/hadoopmanagment/databar/shangshi'),
             meta: { title: 'menu.data.shangshi', keepAlive: true }
-          },
-          {
-            path: '/hadoopmanagment/databar/xiaoliang',
-            name: 'xiaoliang',
-            hideChildrenInMenu: true,
-            component: () => import('@/views/hadoopmanagment/databar/xiaoliang'),
-            meta: { title: 'menu.data.xiaoliang', keepAlive: true }
           },
           {
             path: '/hadoopmanagment/databar/zhongliang',
