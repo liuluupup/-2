@@ -18,9 +18,9 @@
           <a-tag
             v-for="tag in tags"
             :key="tag"
-            :color="tag === 'loser' ? 'volcano' : tag.length > 5 ? 'geekblue' : 'green'"
+            :color="tag === '0' ? 'geekblue' :  'green'"
           >
-            {{ tag.toUpperCase() }}
+          {{ tag === '0' ? '正在运行' : '已完成' }}
           </a-tag>
         </span>
         <span slot="action" slot-scope="text, record">
@@ -79,6 +79,7 @@ methods: {
           lisidata().then((res) => {
             console.log('lisidata: ', res)
             this.tableData = res.data
+            console.log(this.tableData)
               this.$notification.success({
                 message: '成功',
                 description: res.msg || `操作成功`
@@ -108,7 +109,7 @@ const columns = [
   },
   {
     title: '操作者',
-    dataIndex: 'runer',
+    dataIndex: 'operator',
     key: 'operator'
   },
   {
@@ -123,7 +124,7 @@ const columns = [
   },
   {
     title: '状态',
-    key: 'tags',
+    key: 'status',
     dataIndex: 'status',
     scopedSlots: { customRender: 'tags' }
   },

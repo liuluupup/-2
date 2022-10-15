@@ -2,16 +2,22 @@
   <page-header-wrapper>
     <a-card :body-style="{ padding: '24px 32px' , height:'650px'}" :bordered="false">
     </a-card>
-    <div style="width: auto;height: 500px" id="main"></div>
+    <div style="width: auto;height: 500px" id="main" :data-source="modalData" :data="modalData"></div>
   </page-header-wrapper>
 </template>
 <script>
 
   import echarts from 'echarts'
+  import { getBrandPercent } from '@/api/hadoop/hadoop'
+
   export default {
     name: 'Index',
     data () {
-      return {}
+      return {
+        modalData: {},
+        brand: {},
+        count: {}
+      }
     },
     mounted: function () {
       this.$nextTick(function () {
@@ -51,8 +57,8 @@
             textStyle: {// 图例中文字的样式
               color: '#000',
               fontSize: 16
-            },
-            data: ['自营', '非自营']// 图例上显示的饼图各模块上的名字
+            }
+           // 图例上显示的饼图各模块上的名字
           },
           // 饼图中各模块的颜色
           color: ['#32dadd', '#5ab1ef', '#FF6A6A', '#FF3030', '#9400D3', '#6959CD', '#0000FF'],
@@ -60,11 +66,11 @@
           series: {
             // name: 'bug分布',
             type: 'pie', // echarts图的类型   pie代表饼图
-            radius: '70%', // 饼图中饼状部分的大小所占整个父元素的百分比
-            center: ['50%', '60%'], // 整个饼图在整个父元素中的位置
+            radius: '60%', // 饼图中饼状部分的大小所占整个父元素的百分比
+            center: ['50%', '50%'], // 整个饼图在整个父元素中的位置
             // data:''               //饼图数据
             data: [ // 每个模块的名字和值
-              { name: 'Apple', value: 20 },
+              { name: this.modalData.brand, value: this.modalData.count },
               { name: '小米', value: 18 },
               { name: '华为', value: 18 },
               { name: 'OPPO', value: 12 },
@@ -88,6 +94,13 @@
         }
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option)
+      },
+      getid (id) {
+        getBrandPercent({ id }).then(res => {
+        this.modalData = res.data
+        console.log(this.modalData)
+        this.visible = true
+      })
       }
     }
 
