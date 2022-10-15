@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <page-header-wrapper>
     <a-card :body-style="{ padding: '24px 32px' , height:'650px'}" :bordered="false">
       <a-form :form="formData">
@@ -143,4 +143,4 @@ export default {
     }
   }
 
-</script> -->
+</script>

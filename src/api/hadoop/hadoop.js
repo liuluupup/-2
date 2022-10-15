@@ -1,24 +1,27 @@
 import request from '@/utils/request'
 
-export function getList (param) {
+export function makedata (data) {
+    console.log(data)
     return request({
-        url: `/api/hadoop/list`,
-        method: 'get',
-        params: param
-    })
-}
-
-export function addhdfs (data) {
-    return request({
-        url: `/api/hadoop/commit`,
+        url: `/api/spark/generateData`,
         method: 'post',
         data: data
     })
 }
-
-export function delhdfs (id) {
+export function lisidata (data) {
+    console.log(data)
     return request({
-        url: `/api/hadoop/delete/${id}`,
-        method: 'delete'
+        url: `/api/spark/getLogData`,
+        method: 'get',
+        data: data
+    })
+}
+
+export function getItemData (data) {
+    console.log(data)
+    return request({
+        url: `/api/spark/getLogDataDetail`,
+        method: 'get',
+        params: data
     })
 }

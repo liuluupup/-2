@@ -8,7 +8,7 @@
       @submit="handleSubmit"
     >
       <a-alert v-if="isLoginError" type="error" showIcon style="margin-bottom: 24px;" :message="$t('user.login.message-invalid-credentials')" />
-      <a-form-item>
+      <a-form-item style="margin-top: 60px;">
         <a-input
           size="large"
           type="text"
