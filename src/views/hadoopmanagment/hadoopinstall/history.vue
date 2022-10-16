@@ -18,9 +18,8 @@
           <a-tag
             v-for="tag in tags"
             :key="tag"
-            :color="tag === '0' ? 'geekblue' :  'green'"
-          >
-          {{ tag === '0' ? '正在运行' : '已完成' }}
+            :color="tag === '0' ? 'geekblue' : 'green'"
+          >{{ tag === '0' ? '正在运行' : '已完成' }}
           </a-tag>
         </span>
         <span slot="action" slot-scope="text, record">
@@ -30,7 +29,7 @@
             </a-button>
           </div>
           <div>
-            <a-button type="danger" @click="gotolink" style="left:85px;top: -16px;">
+            <a-button type="danger" @click="gotolink(record.id)" style="left:85px;top: -16px;">
               查看结果
             </a-button>
           </div>
@@ -71,8 +70,9 @@ methods: {
       console.log(e)
       this.visible = false
     },
-    gotolink () {
+    gotolink (id) {
       //  对应router目录下index.js中定义的name
+    this.$root.taskId = id
     this.$router.push({ name: 'data1' })
     },
     lisidata () {

@@ -41,6 +41,11 @@ new Vue({
   router,
   store,
   i18n,
+  data: function () {
+    return {
+      taskId: '1'
+    }
+  },
   // init localstorage, vuex, Logo message
   created: bootstrap,
   render: h => h(App)

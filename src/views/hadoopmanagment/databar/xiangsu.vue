@@ -22,8 +22,8 @@ export default {
   mounted: function () {
     var chartDom = document.getElementById('main')
     var myChart = echarts.init(chartDom)
-
-    getXiangsu().then((res) => {
+    var taskId = this.$root.taskId
+    getXiangsu({ taskId }).then((res) => {
       this.data = res.data
       const tmp = {
         values: [],

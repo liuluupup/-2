@@ -138,7 +138,7 @@
 </template>
 
     <script>
-    import { addhdfs, delhdfs, makedata } from '@/api/hadoop/hadoop'
+    import { makedata } from '@/api/hadoop/hadoop'
 
     export default {
       components: {
@@ -164,7 +164,6 @@
        this.reload()
       },
       methods: {
-
         statusChange () {
           this.reloadTableData(true)
         },
@@ -201,40 +200,6 @@
         },
         handleCancel () {
           this.visible = false
-        },
-        handleOk () {
-          this.hadoopform.validateFields((err, values) => {
-            if (!err) {
-              addhdfs(values).then(res => {
-                this.hadoopform.resetFields()
-                this.visible = false
-                this.$notification.success({
-                  message: '成功',
-                  description: res.msg || `添加成功`
-                })
-                this.reload()
-              }).catch(err => {
-                this.$notification.error('error' || err.message)
-              })
-            } else {
-              console.log(err)
-            }
-          })
-        },
-
-        handleDel (id) {
-          delhdfs(id).then((res) => {
-              this.reload()
-              this.$notification.success({
-                message: '成功',
-                description: res.msg || `操作成功`
-              })
-          }).catch(err => {
-          this.$notification.error({
-              message: '失败',
-              description: err.msg || `操作失败`
-          })
-        })
         },
         onChange (e) {
           console.log(`checked = ${e.target.checked}`)

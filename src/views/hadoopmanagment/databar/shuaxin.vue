@@ -22,8 +22,9 @@ export default {
   mounted: function () {
     var chartDom = document.getElementById('main')
     var myChart = echarts.init(chartDom)
-
-    getShuaxin().then((res) => {
+    console.log("请求taskid",this.$root.taskId)
+    var taskId = this.$root.taskId
+    getShuaxin({ taskId }).then((res) => {
       this.data = res.data
       const tmp = {
         values: [],

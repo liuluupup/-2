@@ -22,8 +22,8 @@ export default {
   mounted: function () {
     var chartDom = document.getElementById('main')
     var myChart = echarts.init(chartDom)
-
-    getShangshi().then((res) => {
+    var taskId = this.$root.taskId
+    getShangshi({ taskId }).then((res) => {
       this.data = res.data
       const tmp = {
         values: [],

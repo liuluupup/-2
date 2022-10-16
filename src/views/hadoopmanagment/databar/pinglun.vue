@@ -49,8 +49,8 @@ export default {
         },
       ],
     }
-
-    getPinglun().then((res) => {
+    var taskId = this.$root.taskId
+    getPinglun({ taskId }).then((res) => {
       this.data = res.data
       const tmp = this.data.map((item) => ({ name: item[this.nameProp], value: item[this.valueProp] }))
       option.series[0].data = tmp

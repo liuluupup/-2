@@ -22,8 +22,8 @@ export default {
   mounted: function () {
     var chartDom = document.getElementById('main')
     var myChart = echarts.init(chartDom)
-
-    getChongdian().then((res) => {
+    var taskId = this.$root.taskId
+    getChongdian({ taskId }).then((res) => {
       this.data = res.data
       const tmp = {
         values: [],
