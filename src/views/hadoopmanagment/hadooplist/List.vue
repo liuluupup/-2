@@ -160,9 +160,7 @@
           confirmLoading: false
         }
       },
-      created () {
-       this.reload()
-      },
+      created () {},
       methods: {
         statusChange () {
           this.reloadTableData(true)

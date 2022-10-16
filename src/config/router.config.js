@@ -46,7 +46,7 @@ export const asyncRouterMap = [
         ]
       },
       {
-        path: '/hadoopmanagment/databar/data1',
+        path: '/hadoopmanagment/databar/data',
         name: 'data1',
         component: RouteView,
         meta: { title: 'menu.data.bar', icon: 'desktop' },
