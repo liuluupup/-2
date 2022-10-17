@@ -106,3 +106,12 @@ export function getShuaxin (data) {
         params: data
     })
 }
+
+export function getSim (data) {
+  console.log(data)
+  return request({
+      url: `/api/result/getSimPercent`,
+      method: 'get',
+      params: data
+  })
+}

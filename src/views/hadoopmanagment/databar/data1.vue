@@ -9,7 +9,7 @@
           alt="example"
           src="~@/assets/jdlogo.jpg"
         />
-        <a-card-meta title="自营与非自营的的比例" >
+        <a-card-meta title="单双卡手机比例" >
           <template slot="description">
             www.jd.com
           </template>

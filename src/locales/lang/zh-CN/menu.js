@@ -9,7 +9,7 @@ export default {
     'menu.show.count': '每个价格段内的商品数量',
     'menu.show.h': '脚本验证',
     'menu.data.bar': '展示栏',
-    'menu.data.ziying': '自营与非自营的的比例',
+    'menu.data.ziying': '单双卡手机比例',
     'menu.data.shuaxin': '刷新率前五',
     'menu.data.shangshi': '上市时间后十',
     'menu.data.xiaoliang': '商品销量前十',
