@@ -20,7 +20,7 @@
                 </a-col>
                 <a-col :span="6">
                   <a-form-item>
-                    <a-checkbox-group v-decorator="['brandRandom']">
+                    <a-checkbox-group v-decorator="['brandRandom',{ initialValue : 'false' }]">
                       <a-checkbox :value="true">
                         随机生成
                       </a-checkbox>
@@ -34,7 +34,7 @@
                 </a-col>
                 <a-col :span="6">
                   <a-form-item>
-                    <a-checkbox-group v-decorator="['simRandom']">
+                    <a-checkbox-group v-decorator="['simRandom',{ initialValue : 'false' }]">
                       <a-checkbox :value="true">
                         随机生成
                       </a-checkbox>
@@ -73,7 +73,7 @@
                 </a-col>
                 <a-col :span="6">
                   <a-form-item>
-                    <a-checkbox-group v-decorator="['modelRandom']">
+                    <a-checkbox-group v-decorator="['modelRandom',{ initialValue : 'false' }]">
                       <a-checkbox :value="true">
                         随机生成
                       </a-checkbox>
@@ -88,7 +88,7 @@
                 </a-col>
                 <a-col :span="6">
                   <a-form-item>
-                    <a-checkbox-group v-decorator="['systemRandom']">
+                    <a-checkbox-group v-decorator="['systemRandom',{ initialValue : 'false' }]">
                       <a-checkbox :value="true">
                         随机生成
                       </a-checkbox>
@@ -172,10 +172,15 @@
           this.dataForm.validateFields((err, values) => {
         if (!err) {
           const { num, sim1, sim2, android, hamous, ios, other, name, brand, model, brandRandom, simRandom, modelRandom, systemRandom } = values
+          console.log('values', values)
+          console.log('systemRandom', systemRandom)
+          console.log('simRandom', simRandom)
+          console.log('brandRandom', brandRandom)
+          console.log('modelRandom', modelRandom)
           const formData = {
             num,
-            systemPercent: systemRandom[0] !== true ? `${android};${hamous};${ios};${other}` : '0',
             simPercent: simRandom[0] !== true ? `${sim1};${sim2}` : '0',
+            systemPercent: systemRandom[0] !== true ? `${android};${hamous};${ios};${other}` : '0',
             name,
             brand: brandRandom[0] !== true ? brand : '0',
             model: modelRandom[0] !== true ? model : '0'
